@@ -1,6 +1,5 @@
 # Data Lake Architectures
-Portifólio pessoal com modelos arquiteturais de projetos Big Data utilizando soluções variadas (AWS, GCP, Azure, On Premisses).
-<br>
+Portifólio pessoal com modelos arquiteturais de projetos Big Data utilizando soluções variadas (AWS, GCP, Azure, On Premisse).
 
 ##  Data Lake Zones
 Geralmente costumo quebrar uma grande solução em pequenas partes.
@@ -14,7 +13,6 @@ Uma solução Big Data começo criando subdivisões para o Data Lake chamadas de
 * Fonte de dados para a Raw Zone.
 * No caso de streaming, esta zone não possui um storage, pode se considerar a tecnologia utilizada (Kafka, Spark Stream, etc).
 * Os coletores que fazem aquisição de dados nas variadas fontes conectam somente nesta zona.
-<br>
 
 #### Raw Zone (Raw Data)
 * Zona de dados brutos ou nativos.
@@ -22,7 +20,6 @@ Uma solução Big Data começo criando subdivisões para o Data Lake chamadas de
 * Não possui esquema de dados definidos, os dados podem ser semi estruturados ou não estruturados.
 * Pode haver verificações e validações básicas da qualidade durante o processo de ingestão de dados.
 * Servirá de fonte de dados para todo o Data Lake.
-<br>
 
 #### Trusted Zone (Treated Data)
 * Zona confiável, zona dos dados tratados.
@@ -32,7 +29,6 @@ Uma solução Big Data começo criando subdivisões para o Data Lake chamadas de
 * Ocorre a aplicação de métodos de limpeza, validação, deduplication (única versão) e padronização de dados.
 * Esta zona permite verificar e validar a qualidade dos dados de forma intensa.
 * O catálogo de metadados está disponível para todos que precisem dos dados.
-<br>
 
 #### Refined Zone (Enriched Data)
 * Zona refinada ou purificada (última etapa de purificação), os dados são enriquecidos e armazenados nesta zona.
@@ -43,7 +39,6 @@ Uma solução Big Data começo criando subdivisões para o Data Lake chamadas de
 * Os dados podem passar por mais etapas de verificações e validações de qualidade, gerenciamento do ciclo de vida e políticas de expurgo.
 * Os dados são frequentemente transformados para atender as necessidades dos LOB’s específicos.
 * O catálogo de metadados está disponível para todos que necessitam dos dados.
-<br>
 
 #### Sandbox (Machine Learning Exploration Zone)
 * Zona destinada a pesquisas e exploração de dados (EDA - Exploratory Data Analysis)
@@ -52,7 +47,6 @@ Uma solução Big Data começo criando subdivisões para o Data Lake chamadas de
 * Provê segurança aos dados tratados de outras zonas que não podem alterados.
 * Os dados podem ser importados a partir de qualquer uma das zonas. As mais comuns são Trusted Zone e Refined Zone onde os dados estão estruturados e devidamente tratados.
 * Algumas informações podem ser enviadas de volta à zona bruta, permitindo que dados derivados atuem como dados de origem.
-<br>
 
 ## Solução Big Data AWS EMR
 
