@@ -3,7 +3,7 @@ Portifólio pessoal com modelos arquiteturais de projetos Big Data utilizando so
 
 ##  Data Lake Zones
 Geralmente costumo quebrar uma grande solução em pequenas partes.
-Em uma solução Big Data começo criando subdivisões para o Data Lake chamadas de zonas. Cada zona possui suas finalidades específicas. A seguir uma breve descrição e premissas de cada zona:
+Em uma solução Big Data começo criando subdivisões para o Data Lake chamadas de zonas. Cada zona possui suas finalidades e premissas específicas. A seguir uma breve descrição de cada uma:
 
 ####  Landing Zone (Collected Data)
 * Zona de aterrissagem de dados coletados.
@@ -12,8 +12,7 @@ Em uma solução Big Data começo criando subdivisões para o Data Lake chamadas
 * Pode haver verificações e validações básicas da qualidade durante ou após o processo de aquisição de dados.
 * Fonte de dados para a Raw Zone.
 * No caso de streaming, esta zona não possui um storage, podemos considerar a tecnologia utilizada (Kafka, Spark Stream, etc).
-* Os coletores que fazem aquisição de dados nas variadas fontes conectam somente nesta zona.
-* Esta zona funciona como se fosse uma camada de integração entre variadas fontes de dados e o Data Lake, garantindo assim, uma melhor segurança no acesso à Raw Zone (core do Data Lake).
+* Os agentes que fazem a coleta dos dados nas variadas fontes, conectam somente nesta zona como se fosse uma camada de integração entre as fontes de dados e o Data Lake, garantindo assim, uma melhor segurança no acesso à Raw Zone (core do Data Lake).
 
 #### Raw Zone (Raw Data)
 * Zona de dados brutos ou nativos.
@@ -26,12 +25,12 @@ Em uma solução Big Data começo criando subdivisões para o Data Lake chamadas
 #### Treated Zone (Treated Data)
 * Zona de dados tratados.
 * Os dados são armazenados de forma estruturada, exige-se a definição do esquema de dados.
-* Utiliza os dados brutos da Raw Zone como fonte de dados.
+* Utiliza os dados brutos (Raw Data) como fonte de dados.
 * Os dados são alterados e preparados para que estejam em conformidade com as exigências do negócio.
-* Ocorre a aplicação de métodos de limpeza, validação, deduplication (versão única) e padronização de dados.
+* Ocorre a aplicação de métodos de limpeza, validação, deduplication (versão única) e padronização de dados durante o processo de tratamento de dados.
 * Esta zona permite verificar e validar a qualidade dos dados de forma intensa.
 * O catálogo de metadados está disponível para todos que precisarem dos dados.
-* Os dados desta zona geralmente são consumidos por cientistas de dados, analistas de dados e podem servir de fonte de dados para Refined Zone ou Sandbox.
+* Os dados desta zona geralmente são consumidos por analistas e cientistas de dados e podem servir de fonte de dados para Refined Zone ou Sandbox.
 
 #### Refined Zone (Enriched Data)
 * Zona refinada ou purificada, os dados são enriquecidos e armazenados nesta zona.
@@ -46,11 +45,11 @@ Em uma solução Big Data começo criando subdivisões para o Data Lake chamadas
 
 #### Sandbox (Machine Learning Exploration Zone)
 * Zona destinada a pesquisas e exploração de dados (EDA - Exploratory Data Analysis).
-* È utilizada por analistas e cientistas de dados para trabalhar com modelos preditivos de Machine Learning e Deeping Learning.
+* É utilizada por analistas e cientistas de dados para explorar dados e trabalhar com modelos preditivos de Machine Learning ou Deeping Learning.
 * Permite que analistas e cientistas de dados criem casos de uso em ambientes prontos, sem necessidade de provisionar novos ambientes ou nova infraestrutura para fazerem seus experimentos.
-* Provê segurança aos dados tratados e refinados que não podem alterados.
+* Provê segurança aos dados tratados e refinados que devem permanecer inalterados.
 * Os dados podem ser importados a partir da Treated Zone e/ou Refined Zone onde os dados estão estruturados e devidamente tratados.
-* Algumas informações podem ser enviadas de volta à zona bruta, permitindo que dados derivados atuem como dados de origem.
+* Algumas informações podem ser enviadas de volta à Raw Zone, permitindo que dados derivados atuem como dados de origem.
 
 ## Solução Big Data AWS EMR
 
